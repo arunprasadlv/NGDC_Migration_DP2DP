@@ -35,6 +35,7 @@ Gate to pass before the next stage starts. Stages 0 to 7 run per provider applic
 - **Dates:** internal cutover target 15 Jun 2027; hard deadline 30 Jun 2027, which is also heritage DataPower end of life; heritage retirement planned for Q3 2027. No exception may go past 30 Jun 2027.
 - **Freeze:** production changes avoid the last week of each month. Non-production work continues.
 - **Trigger:** the provider raises a Jira ticket quoting its TCI number. No ticket, no wave. Mandatory fields: TCI number, application, proxies, planned date, contact, backend readiness from UAT and the production neighborhood.
+- **Ticket-by date:** the central team sets one date for all providers to raise the ticket. A provider that has not raised it by that date is reported weekly to CIO team leadership. What happens after the report is not defined yet.
 - **Planned date:** it comes from the provider's ticket. The central team compares it with the window and proposes an earlier date for conflicts. Anything that cannot make 30 Jun goes to the CIO as an end-of-life risk.
 - **Waves:** CIOs migrate in parallel, each with several waves, grouped by provider application.
 - **Tickets:** one parent ticket per provider application, one child ticket per consumer-API pair. The consumer raises the child ticket after its traffic cutover and closes its own TCI. The central team verifies the logs and closes the ticket.
@@ -49,10 +50,11 @@ Gate to pass before the next stage starts. Stages 0 to 7 run per provider applic
 - **Roles:** the central team owns the process. Consumers make the changes. Providers coordinate with consumers for testing.
 - **Consumer discovery:** the inventory lists providers and consumers. Reconcile it against heritage traffic logs per wave and add any missing callers.
 - **Communication:** consumers get one consolidated notice listing all of their APIs.
-- **Reporting:** weekly status to CIOs (including provider tickets received against due) and a monthly steering review.
+- **Reporting:** weekly status to CIOs (including provider tickets received against due, and providers that missed the ticket-by date, also sent to CIO team leadership) and a monthly steering review.
 
 ## Open actions
-- Set the ticket-by dates and send the request to all providers.
+- Set the ticket-by date for all providers, send the request, and set up the weekly report to CIO team leadership for providers that miss it.
+- Define what happens after a missed ticket-by date is reported (not yet decided).
 - Confirm whether consumer TCIs have been issued.
 - Define the Jira statuses for provider and child tickets.
 - Choose the pilot provider applications.
