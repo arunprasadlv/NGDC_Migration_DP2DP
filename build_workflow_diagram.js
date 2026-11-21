@@ -1,6 +1,9 @@
 // Builds "NGDC Migration Workflow Diagram.pptx" (one slide, 11 stages in three swimlanes).
 // Usage: npm install pptxgenjs && node build_workflow_diagram.js "NGDC Migration Workflow Diagram.pptx"
 // Afterwards strip folder entries (zip -dq out.pptx "*/") and run the pptx skill validate.py.
+// Builds "NGDC Migration Workflow Diagram.pptx" (one slide, 11 stages in three swimlanes).
+// Usage: npm install pptxgenjs && node build_workflow_diagram.js "NGDC Migration Workflow Diagram.pptx"
+// Afterwards strip folder entries (zip -dq out.pptx "*/") and run the pptx skill validate.py.
 const pptxgen = require("pptxgenjs");
 const out = process.argv[2];
 
@@ -111,10 +114,25 @@ slide.addText("No: earlier date, else CIO risk", { ...noteOpts, x: cx(1) - 1.2, 
 seg(cx(5), kBot, cx(5), kBot + 0.12, { dash: true });
 slide.addText("No: escalate (team, manager, CIO)", { ...noteOpts, x: cx(5) - 1.2, y: kBot + 0.13, w: 2.4, h: 0.17 });
 
+// missed ticket-by date: weekly report to executive leadership, then back to stage 1 when the ticket arrives
+const rx = bx(2), rw = bx(3) + W - bx(2);
+path([[bx(0) + W, cyL("P")], [rx, cyL("P")]], { dash: true, arrow: true });
+slide.addText("No ticket by the set date", { ...noteOpts, x: bx(0) + W + 0.06, y: cyL("P") - 0.4, w: rx - (bx(0) + W) - 0.12, h: 0.34 });
+path([[rx + rw / 2, pTop], [rx + rw / 2, pTop - 0.12], [cx(0), pTop - 0.12], [cx(0), pTop]], { dash: true, arrow: true });
+slide.addText("Ticket arrives", { ...noteOpts, x: cx(0), y: pTop - 0.3, w: rx + rw / 2 - cx(0), h: 0.17 });
+slide.addText(
+  [
+    { text: "Weekly report to", options: { bold: true, fontSize: 11, breakLine: true } },
+    { text: "executive leadership", options: { bold: true, fontSize: 11, breakLine: true } },
+    { text: "Central team waits for the ticket", options: { fontSize: 10 } },
+  ],
+  { shape: S.roundRect, rectRadius: 0.08, x: rx, y: cyL("P") - H / 2, w: rw, h: H, fill: { color: NAVY }, line: { color: NAVY, width: 0 }, fontFace: FONT, color: "FFFFFF", align: "center", valign: "middle", margin: 0.04 }
+);
+
 // ---- stage boxes ----------------------------------------------------------
 const stages = [
   { n: "0", c: 0, l: "C", t: "Inventory validated", s: "All parties recorded" },
-  { n: "1", c: 0, l: "P", t: "Provider ticket raised", s: "TCI number, planned date" },
+  { n: "1", c: 0, l: "P", t: "Provider ticket raised", s: "TCI number, planned date", gate: true },
   { n: "2", c: 1, l: "C", t: "Wave planned", s: "Date checked vs window", gate: true },
   { n: "3", c: 2, l: "C", t: "Consumers reconciled", s: "Heritage logs vs inventory" },
   { n: "4", c: 3, l: "C", t: "UAT deploy and notify", s: "One notice per consumer" },

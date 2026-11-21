@@ -9,7 +9,7 @@
 
 ## Deliverables (in this repo)
 - `NGDC DataPower Migration Partner Engagement Process.docx`: the process document. Export of the Claude Doc "NGDC DataPower Migration: Partner Engagement Process" (https://claude.ai/artifact/7PPPD3amaPXxpAwSdqRD3j). The Doc is the editable source; re-export after changing it.
-- `NGDC Migration Workflow Diagram.pptx`: one-slide workflow diagram, built with pptxgenjs and not exported from the Doc. It shows all 11 stages (0 to 10) in three swimlanes (provider, central team, consumer), with 4 gates and 3 loop-backs. The diagram in the Doc is a separate widget (vertical flow, same 11 stages), so update both when the process changes.
+- `NGDC Migration Workflow Diagram.pptx`: one-slide workflow diagram, built with pptxgenjs and not exported from the Doc. It shows all 11 stages (0 to 10) in three swimlanes (provider, central team, consumer), with 5 gates (including the ticket-by date check at stage 1, which loops through the weekly executive leadership report) and loop-backs. The diagram in the Doc is a separate widget (vertical flow, same 11 stages), so update both when the process changes.
 
 ## Terms
 - **TCI** (Technology Change Initiative): issued to every provider application and every consumer. It only notifies them that the proxy must migrate by the end of Q2 2027. It carries no provider date.
