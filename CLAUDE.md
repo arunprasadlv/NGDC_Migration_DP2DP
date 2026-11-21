@@ -76,6 +76,6 @@ Agents should read and draft first. Anything that sends messages, closes tickets
 - The inventory (API, NGDC proxy name, CIO, providers, consumers) is not in this repo.
 - Capacity estimate: about 20 production weeks from Dec 2026 to 15 Jun 2027, so roughly 35 provider applications and 50 proxies per week. This is a planning estimate only.
 - Doc export: the docx export result is large and base64-encoded. Decode it from the saved tool-result JSON into this folder.
-- PowerPoint: build the slide with pptxgenjs (16:9, 13.33 x 7.5 in, Calibri; navy = central team, teal = provider, orange = consumer) and run the skill's `validate.py`. Render it with the skill's `soffice.py` wrapper where LibreOffice is available (it was in the 21 Nov 2026 session; it was not on the earlier machine). The build script is not saved in this repo.
+- PowerPoint: build the slide with pptxgenjs (16:9, 13.33 x 7.5 in, Calibri; navy = central team, teal = provider, orange = consumer) and run the skill's `validate.py`. Render it with the skill's `soffice.py` wrapper where LibreOffice is available (it was in the 21 Nov 2026 session; it was not on the earlier machine). The build script is `build_workflow_diagram.js` in this repo (needs `npm install pptxgenjs`).
 - Doc diagram: a widget redrawn with the Docs `update` call (`draft`, then `publish`). Keep its text ids so comments stay attached.
 - Git: remote is `https://github.com/arunprasadlv/NGDC_Migration_DP2DP` (private), branch `main`. `.gitignore` excludes Word lock files (`~$*`).
