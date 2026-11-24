@@ -42,6 +42,11 @@
 - **Consumer discovery:** reconcile the inventory against heritage traffic logs per wave and add any missing callers.
 - **Reporting:** gate status is recorded in the inventory and shown in Power BI. Weekly status to CIOs and a monthly steering review.
 
+## Reports (R1 to R9, marked on the diagram)
+- R1 wave plan with window check and conflicts (stage 1); R2 data quality (stages 0 and 3); R3 plan confirmation tracker (stage 2); R4 UAT sign-off tracker (stages 5 and 6); R5 gate status per application, shown in Power BI (stages 7 and 10); R6 cutover closure verification per consumer (stage 9); R7 weekly CIO status and R8 monthly steering pack, both roll-ups; R9 heritage retirement (stage 11).
+- The provider plan message and the consumer UAT notice are communications, not reports.
+- Formats, cadences and thresholds are still to be defined. Detailed reporting requirements are deferred to a later discussion.
+
 ## Open actions
 - Name the application field (join key) in the inventory and in the flight plan.
 - Discuss how gate status is maintained in the inventory, and who maintains the Power BI dashboard.
@@ -50,6 +55,7 @@
 - Compute the full counts of provider applications, consumers, APIs and stories per CIO and zone.
 - Confirm the API management team's headcount.
 - Confirm the exact heritage DataPower end-of-life date within Q2 2027.
+- Define the format, cadence and thresholds for each report (R1 to R9), including the dashboard refresh and who maintains it.
 - Confirm the proposed lead-time template (6 weeks before the flight plan date: notify and deploy to UAT; 6 to 4: testing and sign-off, only 2 weeks; 4: pre-deployment gate; 4 to 0: cutovers).
 - Collect the flight plan dates, identify applications with no date, and run the first window check.
 
