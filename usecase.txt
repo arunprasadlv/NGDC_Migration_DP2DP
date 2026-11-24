@@ -3,3 +3,16 @@ we have 1000 Datapower proxies that need be migrated from heritage DC to new gen
 The development of the DP proxies to new framework is already completed. Pending activity is to deploy the proxies to non production , engage partner for testing , deploy it to production and then complete the cutover.
 
 There is no process established to coordinate with API providers and API consumers. the goal is to define the process to support the engagement with partners and complete the migration to ngdc
+
+
+
+I want to make some updates to the workflow.
+
+Instead of the provider submitting the ticket . The Central API Management team, 
+will take API Inventory and DCMS Fligh plan to prioritize the migration of api in waves.
+
+API Management team will plan the waves and communinicate the plan to the providers 
+
+Lets deep dive into idea and figure out the process in details .
+
+
