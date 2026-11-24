@@ -16,29 +16,29 @@
 ## Terms
 - **TCI** (Technology Change Initiative): there are two shared TCIs, sent earlier this year, one for all providers and one for all consumers. Each party has its own item under them. They only notify that the proxy must migrate by the end of Q2 2027 and carry no provider date.
 - **DCMS flight plan**: owned by the DCMS CDAE team. Lists applications and the date each must go to production. It has no provider or consumer information, and it can include consumer applications.
-- **API inventory**: one row per API, with its proxy, provider application, consumers and CIO. The central team records gate status and dates in it, and a Power BI dashboard reads it. It has no TCI numbers.
+- **API inventory**: one row per API, with its proxy, provider application, consumers and CIO. The API management team records gate status and dates in it, and a Power BI dashboard reads it. It has no TCI numbers.
 - **Hard gates**: pre-deployment gate is met when every proxy of the application is deployed in production. Post-deployment gate is met when all consumer traffic has cut over and heritage has zero traffic. Both are due by the flight plan date and are tracked per application.
 - **Neighborhood**: the production infrastructure per CIO team. All are available.
 - **UAT**: the shared non-production environment where partner testing happens.
-- **Central team**: the central API management team. **Flux** is the pod that manages the Jira tasks.
+- **API management team**: owns the migration. **Flux** is the pod that manages the Jira tasks.
 - **Network zones**: gen zone, CD zone and PAA zone. A provider API can be in any of them.
 
 ## Decisions (settled)
-- **Planning:** the central team plans the waves. Providers do not raise a ticket to start. The earlier provider-ticket trigger and ticket-by dates were dropped.
+- **Planning:** the API management team plans the waves. Providers do not raise a ticket to start. The earlier provider-ticket trigger and ticket-by dates were dropped.
 - **Date source:** the flight plan date per provider application. The inventory decides each application's role: provider dates drive the plan, consumer-only applications are ignored, and an application that is both uses its provider date. Consumer schedules never affect proxy migration or cutover.
-- **Missing or unmatched date:** an application with no flight plan date, or present in only one source, is an exception. The central team asks the provider for a date within 10 business days and records it as provider-supplied. If there is no reply, the central team assigns a date inside the window and escalates via the CIO.
+- **Missing or unmatched date:** an application with no flight plan date, or present in only one source, is an exception. The API management team asks the provider for a date within 10 business days and records it as provider-supplied. If there is no reply, the API management team assigns a date inside the window and escalates via the CIO.
 - **Ordering:** flight plan date first, then business criticality and consumer count. CIOs migrate in parallel, each with several waves. Conflicts get a proposed earlier date. Anything that cannot make 30 Jun 2027 is a CIO end-of-life risk, not an exception. The plan is refreshed weekly.
 - **Dates:** internal cutover target 15 Jun 2027; hard deadline 30 Jun 2027, which is also heritage DataPower end of life; heritage retirement planned for Q3 2027. No exception may go past 30 Jun 2027.
 - **Freeze:** production changes avoid the last week of each month. Non-production work continues.
-- **Provider communication:** one plan message per provider after the waves are planned. The provider confirms the date or requests a change, and confirms backend readiness. If it does not respond, the central team escalates via the CIO and keeps the date. A further message goes out only when a date changes.
+- **Provider communication:** one plan message per provider after the waves are planned. The provider confirms the date or requests a change, and confirms backend readiness. If it does not respond, the API management team escalates via the CIO and keeps the date. A further message goes out only when a date changes.
 - **Consumer communication:** one notice per consumer per wave, sent when the proxies are in UAT. It gives testing and sign-off dates and the planned cutover date, and references the consumer TCI.
-- **Jira:** when a wave is planned, a story per provider application per network zone is assigned to the central team. The Flux pod creates tasks under it from a standard template. Zone only splits the execution work; gates, dates and status stay per application. Providers create no tickets.
+- **Jira:** when a wave is planned, a story per provider application per network zone is assigned to the API management team. The Flux pod creates tasks under it from a standard template. Zone only splits the execution work; gates, dates and status stay per application. Providers create no tickets.
 - **Sign-off:** UAT sign-off is mandatory from the provider and from each consumer of the API. A consumer cannot cut over without it, and silence is not consent. Non-responders go through stepped escalation (team, manager, CIO leadership). Each API has a published retirement date as the backstop.
 - **Cutover:** the proxy is deployed to production after the provider signs off. Each consumer then cuts over independently, in weeks 1 to 3 of a month.
-- **Closure:** the consumer raises a Jira ticket after production cutover. The central team verifies the logs and closes it, and then the consumer closes its TCI item. The provider's TCI item closes once the central team confirms zero heritage traffic for the application.
+- **Closure:** the consumer raises a Jira ticket after production cutover. The API management team verifies the logs and closes it, and then the consumer closes its TCI item. The provider's TCI item closes once the API management team confirms zero heritage traffic for the application.
 - **Rollback:** the consumer reverts to the heritage URL. Heritage is never changed while a consumer still uses it.
 - **Retirement:** a heritage proxy retires after 2 weeks of zero traffic from all consumers. This is tracked separately from the TCI items.
-- **Roles:** the central team owns the process. Consumers make the changes. Providers coordinate with consumers for testing.
+- **Roles:** the API management team owns the process. Consumers make the changes. Providers coordinate with consumers for testing.
 - **Consumer discovery:** reconcile the inventory against heritage traffic logs per wave and add any missing callers.
 - **Reporting:** gate status is recorded in the inventory and shown in Power BI. Weekly status to CIOs and a monthly steering review.
 
@@ -48,7 +48,7 @@
 - Define the Jira statuses and the standard task template per story, and confirm which teams besides the Flux pod create tasks.
 - Choose the pilot provider applications, based on flight plan dates.
 - Compute the full counts of provider applications, consumers, APIs and stories per CIO and zone.
-- Confirm the central team's headcount.
+- Confirm the API management team's headcount.
 - Confirm the exact heritage DataPower end-of-life date within Q2 2027.
 - Confirm the proposed lead-time template (6 weeks before the flight plan date: notify and deploy to UAT; 6 to 4: testing and sign-off, only 2 weeks; 4: pre-deployment gate; 4 to 0: cutovers).
 - Collect the flight plan dates, identify applications with no date, and run the first window check.

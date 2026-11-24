@@ -98,7 +98,7 @@
         <mxCell id="key0" value="" style="rounded=1;arcSize=20;fillColor=#1E2761;strokeColor=#1E2761;" vertex="1" parent="1">
           <mxGeometry x="57" y="695" width="20" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="keyl0" value="Central team" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#4B5563;" vertex="1" parent="1">
+        <mxCell id="keyl0" value="API management team" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#4B5563;" vertex="1" parent="1">
           <mxGeometry x="87" y="690" width="150" height="30" as="geometry"/>
         </mxCell>
         <mxCell id="key1" value="" style="rounded=1;arcSize=20;fillColor=#028090;strokeColor=#028090;" vertex="1" parent="1">
