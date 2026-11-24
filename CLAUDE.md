@@ -50,7 +50,7 @@
 - Compute the full counts of provider applications, consumers, APIs and stories per CIO and zone.
 - Confirm the central team's headcount.
 - Confirm the exact heritage DataPower end-of-life date within Q2 2027.
-- Confirm the proposed lead-time template (8 weeks before the flight plan date: notify and deploy to UAT; 8 to 4: testing and sign-off; 4: pre-deployment gate; 4 to 0: cutovers).
+- Confirm the proposed lead-time template (6 weeks before the flight plan date: notify and deploy to UAT; 6 to 4: testing and sign-off, only 2 weeks; 4: pre-deployment gate; 4 to 0: cutovers).
 - Collect the flight plan dates, identify applications with no date, and run the first window check.
 
 ## AI agent candidates (ranked)
